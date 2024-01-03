@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Product.Api.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
     public class HomeController : ControllerBase
     {
