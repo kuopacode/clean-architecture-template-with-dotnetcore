@@ -10,5 +10,10 @@ namespace Product.Doamin.AggregateModels.ProductAggrerate
     public class ProductPicEntity : Entity
     {
         public string PictureUrl { get; set; }
+        public ProductPicEntity() { }
+        public ProductPicEntity(string url)
+        {
+            PictureUrl = url;
+        }
     }
 }
