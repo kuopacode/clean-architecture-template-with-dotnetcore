@@ -37,6 +37,11 @@ builder.Services.AddSwaggerGen(c =>
     c.IncludeXmlComments(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"Product.Api.xml"));
 });
 
+var assemblyNames = Assembly.GetExecutingAssembly().GetReferencedAssemblies();
+var profileAssemblies = assemblyNames.Select(assenbly => Assembly.Load(assenbly)).ToList();
+profileAssemblies.Add(Assembly.GetExecutingAssembly());
+builder.Services.AddAutoMapper(profileAssemblies);
+
 // Repositories
 //builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
