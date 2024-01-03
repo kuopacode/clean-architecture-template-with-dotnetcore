@@ -14,7 +14,6 @@ namespace Product.Infrastucture.EntityConfigs
             config.Ignore(b => b.DomainEvents);
 
             config.Property(p => p.ProductName).HasColumnName("product_name");
-            config.Property(p => p.SaleCode).HasColumnName("sale_code");
             config.Property(p => p.Description).HasColumnName("description");
             {
                 var converter = new ValueConverter<ProductStatus, int>(

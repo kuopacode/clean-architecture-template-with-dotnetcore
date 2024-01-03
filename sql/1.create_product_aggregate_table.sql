@@ -1,7 +1,6 @@
 CREATE TABLE products (
     Id INT AUTO_INCREMENT PRIMARY KEY,
     product_name VARCHAR(50),
-    sale_code VARCHAR(20),
     description TEXT,
     status INT,
     sale_start_date DATETIME,

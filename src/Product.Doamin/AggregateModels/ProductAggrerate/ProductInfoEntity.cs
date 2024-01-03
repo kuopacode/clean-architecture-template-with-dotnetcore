@@ -11,5 +11,12 @@ namespace Product.Doamin.AggregateModels.ProductAggrerate
     {
         public string Title { get; set; }
         public string Content { get; set; }
+
+        public ProductInfoEntity() { }
+        public ProductInfoEntity(IProductInfoEntity info)
+        {
+            Title = info.Title;
+            Content = info.Content;
+        }
     }
 }

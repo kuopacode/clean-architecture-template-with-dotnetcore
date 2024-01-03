@@ -12,5 +12,13 @@ namespace Product.Doamin.AggregateModels.ProductAggrerate
         public int D1CategoryId { get; set; }
         public int D2CategoryId { get; set; }
         public int D3CategoryId { get; set; }
+
+        public ProductCategoryEntity() { }
+        public ProductCategoryEntity(IProductCategoryEntity category)
+        {
+            D1CategoryId = category.D1CategoryId;
+            D2CategoryId = category.D2CategoryId;
+            D3CategoryId = category.D3CategoryId;
+        }
     }
 }
