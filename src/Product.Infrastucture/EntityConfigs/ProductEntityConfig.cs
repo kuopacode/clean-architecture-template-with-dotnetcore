@@ -15,13 +15,8 @@ namespace Product.Infrastucture.EntityConfigs
 
             config.Property(p => p.ProductName).HasColumnName("product_name");
             config.Property(p => p.Description).HasColumnName("description");
-            {
-                var converter = new ValueConverter<ProductStatus, int>(
-                        from => from.Id,
-                        to => ProductStatus.From(to)
-                    );
-                config.Property(p => p.Status).HasConversion(converter).HasColumnName("status");
-            }
+            config.Property(c => c.Status).HasColumnName("status")
+                .HasConversion(new ValueConverter<ProductStatus, int>(from => from.Id, to => ProductStatus.From(to)));
             config.Property(pd => pd.SaleStartDate).HasColumnName("sale_start_date");
             config.Property(pd => pd.SaleEndDate).HasColumnName("sale_end_date");
             config.Property(p => p.Stock).HasColumnName("stock");

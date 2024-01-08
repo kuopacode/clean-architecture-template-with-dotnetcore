@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Product.Doamin.SeedWork
 {
-    public interface IUnitOfWork
+    public interface IUnitOfWork : IDisposable
     {
         Task<int> SaveEntitiesAsync(CancellationToken cancellationToken = default);
     }

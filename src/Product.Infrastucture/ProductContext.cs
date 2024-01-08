@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.Logging;
 using Product.Doamin.AggregateModels.ProductAggrerate;
 using Product.Doamin.SeedWork;
+using Product.Infrastucture.EntityConfigs;
 using Product.Infrastucture.Extensions;
 
 namespace Product.Infrastucture
@@ -29,6 +30,15 @@ namespace Product.Infrastucture
         {
             _logger = logger;
             _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new ProductEntityConfig());
+            modelBuilder.ApplyConfiguration(new ProductCategoryEntityConfig());
+            modelBuilder.ApplyConfiguration(new ProductInfoEntityConfig());
+            modelBuilder.ApplyConfiguration(new ProductPicEntityConfig());
+            modelBuilder.ApplyConfiguration(new ProductPriceScheduleEntityConfig());
         }
 
         public async Task<int> SaveEntitiesAsync(CancellationToken cancellationToken = default)
