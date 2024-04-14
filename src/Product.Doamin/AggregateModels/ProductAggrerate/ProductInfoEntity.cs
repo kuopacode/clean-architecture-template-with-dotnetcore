@@ -12,7 +12,7 @@ namespace Product.Doamin.AggregateModels.ProductAggrerate
         public ProductInfoType InfoType { get; set; }
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
-        public string Title => InfoType.Name;
+        public string Title { get; set; }
         public string Content { get; set; }
 
         public ProductInfoEntity() { }
@@ -21,6 +21,7 @@ namespace Product.Doamin.AggregateModels.ProductAggrerate
             InfoType = ProductInfoType.From(info.ProductInfoType);
             StartDate = info.StartDate;
             EndDate = info.EndDate;
+            Title = ProductInfoType.From(info.ProductInfoType).Name;
             Content = info.Content;
         }
     }

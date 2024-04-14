@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
-using Product.Api.Applications.Dtos;
+using Product.Api.Applications.Models;
 using Product.Doamin.AggregateModels.ProductAggrerate;
 
 namespace Product.Api.Applications.Commands
@@ -18,7 +18,7 @@ namespace Product.Api.Applications.Commands
         }
         public async Task<bool> Handle(AddProductCommand request, CancellationToken cancellationToken)
         {
-            var product = _mapper.Map<ProductDto>(request);
+            var product = _mapper.Map<ProductEntityModel>(request);
             var entity = new ProductEntity(product);
 
             _repo.Add(entity);

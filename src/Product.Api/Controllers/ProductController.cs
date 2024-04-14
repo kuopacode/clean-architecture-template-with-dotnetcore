@@ -2,6 +2,9 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Product.Api.Applications.Commands;
+using Product.Api.Applications.Dtos;
+using Product.Api.Applications.Queries;
+using Product.Api.Applications.ViewModels;
 using Swashbuckle.AspNetCore.Annotations;
 
 namespace Product.Api.Controllers
@@ -24,6 +27,15 @@ namespace Product.Api.Controllers
         public async Task<IActionResult> Add([FromBody] AddProductCommand command, CancellationToken cancellationToken)
         {
             var result = await _mediator.Send(command, cancellationToken);
+            return Ok(result);
+        }
+
+        [HttpGet, Route("/backend/product/get")]
+        [SwaggerOperation(Summary = "新增商品", Tags = new[] { "新增/編輯商品" })]
+        [ProducesResponseType(typeof(GetProductVo), 200)]
+        public async Task<IActionResult> Get([FromQuery] GetProductQuery query, CancellationToken cancellationToken)
+        {
+            var result = await _mediator.Send(query, cancellationToken);
             return Ok(result);
         }
     }

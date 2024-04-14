@@ -86,11 +86,8 @@ internal class Program
         profileAssemblies.Add(Assembly.GetExecutingAssembly());
         builder.Services.AddAutoMapper(profileAssemblies);
 
-        // Repositories
         builder.Services.AddScoped<IProductRepository, ProductRepository>();
-
-        
-
+        builder.Services.AddScoped<IProductQuery, ProductQuery>();
     }
 
     private static async Task ConfigurePipeline(WebApplication app)
