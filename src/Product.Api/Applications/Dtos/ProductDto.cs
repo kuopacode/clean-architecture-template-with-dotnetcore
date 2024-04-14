@@ -16,7 +16,9 @@ namespace Product.Api.Applications.Dtos
 
         public class ProductInfoDto : IProductInfoEntity
         {
-            public string Title { get; set; }
+            public int ProductInfoType { get; set; }
+            public DateTime? StartDate { get; set; }
+            public DateTime? EndDate { get; set; }
             public string Content { get; set; }
         }
         public class ProductPriceScheduleDto : IProductPriceScheduleEntity

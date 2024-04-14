@@ -9,13 +9,18 @@ namespace Product.Doamin.AggregateModels.ProductAggrerate
 {
     public class ProductInfoEntity : Entity
     {
-        public string Title { get; set; }
+        public ProductInfoType InfoType { get; set; }
+        public DateTime? StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
+        public string Title => InfoType.Name;
         public string Content { get; set; }
 
         public ProductInfoEntity() { }
         public ProductInfoEntity(IProductInfoEntity info)
         {
-            Title = info.Title;
+            InfoType = ProductInfoType.From(info.ProductInfoType);
+            StartDate = info.StartDate;
+            EndDate = info.EndDate;
             Content = info.Content;
         }
     }

@@ -20,7 +20,9 @@ namespace Product.Doamin.AggregateModels.ProductAggrerate
 
     public interface IProductInfoEntity
     {
-        string Title { get; set; }
+        int ProductInfoType { get; set; }
+        DateTime? StartDate { get; set; }
+        DateTime? EndDate { get; set; }
         string Content { get; set; }
     }
     public interface IProductPriceScheduleEntity
